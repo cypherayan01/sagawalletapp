@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
