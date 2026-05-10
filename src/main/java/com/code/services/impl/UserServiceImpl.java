@@ -1,5 +1,9 @@
 package com.code.services.impl;
 
+import java.util.List;
+
+
+
 import org.springframework.stereotype.Service;
 
 import com.code.entities.User;
@@ -23,6 +27,17 @@ public class UserServiceImpl implements UserService{
         log.info("User created with id: {} in database : {}", newUser.getId(), (newUser.getId() % 2 + 1));
 
         return newUser;
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not Found."));
+    
+    }
+
+    @Override
+    public List<User> getUsersByName(String name){
+        return userRepository.findByNameContainingIgnoreCase(name);
     }
 
 
